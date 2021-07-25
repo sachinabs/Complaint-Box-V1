@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="custom_JS/httpCall.js"></script>
+
+
+
+    <title>Welcome - CB</title>
+</head>
+<body onload="trendAndListData();">
+    <form action="http://localhost:6000/submit" method="get">
+    title 
+    <input type="text" name="complaintTitle">
+    <br>
+    <textarea name="complaintDiscretion" id="" cols="30" rows="10"></textarea>
+    <br> 
+    <input type="submit">
+    </form>
+</body>
+</html>
