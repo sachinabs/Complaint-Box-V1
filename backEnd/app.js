@@ -37,15 +37,60 @@ app.get("/submit",(req,res)=>{
     'ComplaintTitle': Title,
     'ComplaintText': Text,
     'ComplaintId': makeId(6),
-    'ComplaintTime':dateAndTime()
+    'ComplaintTime':dateAndTime(),
+    'ComplaintUpVotes': 0,
+    'ComplaintDownVotes': 0
   }
-res.send(myData);
+
+  async function createListing(client, newListing, response) {
+    const result = await client
+      .db("sample")
+      .collection("students")
+      .insertOne(newListing);
+  
+    if (result.acknowledged === true) {
+      res.send("<script>alert('Your Complaint is recorded '); window.location.href = 'http://127.0.0.1:5501/frontEnd/index.html'; </script>");
+    } else {
+      console.log("Data Not Inserted");
+      response.json({status: false});
+    }
+  }
+
+  async function main() {
+    // mongodb+srv://sachin:sachinabs@testingmongo.iaz5f.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
+    // mongodb+srv://sachin:<password>@cluster0.iaz5f.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
+    const uri ="mongodb+srv://sachin:sachinabs@cluster0.iaz5f.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+
+    const client = new MongoClient(uri);
+
+    try {
+      await client.connect();
+      const pen = await createListing(client,myData,res);
+    } catch (e) {
+      console.log("test");
+      console.error(e);
+    } finally {
+      // Close the connection to the MongoDB cluster
+      await client.close();
+    }
+  }
+  main().catch(console.error);
+
+
+
+
+
+
+
 });
 
 app.get("/trend",cors(),(req,res) => {
   res.json({msg: 'This is CORS-enabled for a Single Route'})
 });
 
+app.get("/showall",cors(),(req,res)=>{
+  res.json({msg: 'This is CORS-enabled for a Single Route'})
+});
 
 const port = 9099;
 app.listen(port, () => console.log(`Listening on port ${port}..`));

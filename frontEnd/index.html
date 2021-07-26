@@ -29,12 +29,12 @@
       href="assets/css/User-Tasks-and-User-Activity-Streams---List-Group-Component.css"
     />
 
-    <script src="custom_JS/httpCall.js"></script>
+  
     <title>Complaint Portal</title>
   </head>
 
   <body onload="trendAndListData();">
-    <form >
+    <form action="http://localhost:9099/showall" method="GET">
       <nav class="navbar navbar-dark navbar-expand-md" id="app-navbar">
         <div class="container-fluid">
           <a class="navbar-brand" href="#"
@@ -96,7 +96,7 @@
                 </li>
               </ul>
             </div>
-            <div class="form-group">
+            <div class="form-group" >
               <ul class="list-group">
                 <li class="list-group-item">
                   <div class="media">
@@ -133,14 +133,13 @@
         </div>
         <div class="col-lg-3">
           <form action="http://localhost:9099/submit" method="get" >
-            <h4 class="text-center">Complaint Box</h4>
-            Title
+            <h4 class="text-center">Complaint Box</h4>        
             <div class="form-group">
               <input
                 class="form-control"
                 type="text"
                 name="complaintTitle"
-                placeholder=""
+                placeholder="Title"
               />
             </div>
             <div class="form-group">
@@ -150,19 +149,19 @@
                 id=""
                 cols="30"
                 rows="12"
-                placeholder=""
+                placeholder="Description"
               ></textarea>
             </div>
             <div class="form-group">
-              <button class="btn btn-primary" type="submit">send</button>
+              <button class="btn btn-primary" id="submit" type="submit">send</button>
             </div>
           </form>
         </div>
-      </div>
+      </div>  
       <script src="assets/js/jquery.min.js"></script>
       <script src="assets/bootstrap/js/bootstrap.min.js"></script>
       <script src="assets/js/-Fixed-Navbar-start-with-transparency-background-BS4-.js"></script>
-
+      <script src="custom_JS/httpCall.js"></script>
       <p id="data"></p>
     </form>
   </body>
