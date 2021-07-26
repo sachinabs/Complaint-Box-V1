@@ -42,9 +42,8 @@ function trendAndListData()
     http.send();
 }
 
-function display()
+function displayAllData()
 {
-  alert("welcome");
   var httpRequestForShowAll = new XMLHttpRequest();
   httpRequestForShowAll.onreadystatechange= function (){
     if(this.readyState == 4 && this.status == 200){
