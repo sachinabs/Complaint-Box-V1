@@ -84,8 +84,30 @@ app.get("/submit",(req,res)=>{
 
 });
 
+myObj = [{
+  name: "Mithun",
+  msg: "This is CORS-enabled for a Single Route",
+  id: "xyz"
+},
+{
+  name: "Nikalya",
+  msg: "This is CORS-enabled for a Single Route",
+  id: "abc"
+},
+{
+  name: "Hashini",
+  msg: "This is CORS-enabled for a Single Route",
+  id: "bda"
+},
+{
+  name: "Arun",
+  msg: "This is CORS-enabled for a Single Route",
+  id: "pqr"
+}
+]
+
 app.get("/trend",cors(),(req,res) => {
-  res.json({msg: 'This is CORS-enabled for a Single Route'})
+  res.json(myObj)
 });
 
 app.get("/showall",cors(),(req,res)=>{
