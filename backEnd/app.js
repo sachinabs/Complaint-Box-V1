@@ -102,18 +102,10 @@ app.get("/trend", cors(), (req, res) => {
 });
 
 app.get("/showall", cors(), (req, res) => {
-
-  async function findListings( client ) {
-    
-    const cursor = client
-      .db("sample")
-      .collection("students")
-      .find();
+  async function findListings(client) {
+    const cursor = client.db("sample").collection("students").find();
     const results = await cursor.toArray();
-
-    // Print the results
     res.json(results);
-    // console.log(results);
   }
 
   async function main() {
