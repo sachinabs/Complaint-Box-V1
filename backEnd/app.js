@@ -126,5 +126,22 @@ app.get("/showall", cors(), (req, res) => {
   main().catch(console.error);
 });
 
+app.get("/id",(req,res) =>{
+ 
+  console.log(req.query);
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
 const port = 9099;
 app.listen(port, () => console.log(`Listening on port ${port}..`));
