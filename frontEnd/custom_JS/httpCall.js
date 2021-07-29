@@ -17,32 +17,33 @@ function trendAndListData() {
       let trendfourPara = document.getElementById("trend_four_paragraph");
 
       let myjsonData = JSON.parse(this.response);
+      console.log(myjsonData);
 
-      trendOne.innerHTML = myjsonData[0].name;
-      trendTwo.innerHTML = myjsonData[1].name;
-      trendThree.innerHTML = myjsonData[2].name;
-      trendFour.innerHTML = myjsonData[3].name;
+      trendOne.innerHTML = myjsonData[0].ComplaintTitle;
+      trendTwo.innerHTML = myjsonData[1].ComplaintTitle;
+      trendThree.innerHTML = myjsonData[2].ComplaintTitle;
+      trendFour.innerHTML = myjsonData[3].ComplaintTitle;
 
-      trendonePara.innerHTML = myjsonData[0].msg;
-      trendtwoPara.innerHTML = myjsonData[1].msg;
-      trendthreePara.innerHTML = myjsonData[2].msg;
-      trendfourPara.innerHTML = myjsonData[3].msg;
+      trendonePara.innerHTML = myjsonData[0].ComplaintText;
+      trendtwoPara.innerHTML = myjsonData[1].ComplaintText;
+      trendthreePara.innerHTML = myjsonData[2].ComplaintText;
+      trendfourPara.innerHTML = myjsonData[3].ComplaintText;
 
       trendOne.setAttribute(
         "href",
-        "http://localhost:9099/id?cmpID=" + myjsonData[0].id
+        "http://localhost:9099/id?cmpID=" + myjsonData[0].ComplaintId
       );
       trendTwo.setAttribute(
         "href",
-        "http://localhost:9099/id?cmpID=" + myjsonData[1].id
+        "http://localhost:9099/id?cmpID=" + myjsonData[1].ComplaintId
       );
       trendThree.setAttribute(
         "href",
-        "http://localhost:9099/id?cmpID=" + myjsonData[2].id
+        "http://localhost:9099/id?cmpID=" + myjsonData[2].ComplaintId
       );
       trendFour.setAttribute(
         "href",
-        "http://localhost:9099/id?cmpID=" + myjsonData[3].id
+        "http://localhost:9099/id?cmpID=" + myjsonData[3].ComplaintId
       );
     }
   };
