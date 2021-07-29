@@ -31,19 +31,19 @@ function trendAndListData() {
 
       trendOne.setAttribute(
         "href",
-        "http://localhost:9099/id?cmpID=" + myjsonData[0].ComplaintId
+        "showSingle.html?cid="+ myjsonData[0].ComplaintId
       );
       trendTwo.setAttribute(
         "href",
-        "http://localhost:9099/id?cmpID=" + myjsonData[1].ComplaintId
+        "showSingle.html?cid="+ myjsonData[1].ComplaintId
       );
       trendThree.setAttribute(
         "href",
-        "http://localhost:9099/id?cmpID=" + myjsonData[2].ComplaintId
+        "showSingle.html?cid="+ myjsonData[2].ComplaintId
       );
       trendFour.setAttribute(
         "href",
-        "http://localhost:9099/id?cmpID=" + myjsonData[3].ComplaintId
+        "showSingle.html?cid="+ myjsonData[3].ComplaintId
       );
     }
   };
@@ -55,7 +55,7 @@ function displayAllData() {
   var httpRequestForShowAll = new XMLHttpRequest();
   httpRequestForShowAll.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("data").innerHTML = this.response;
+      // document.getElementById("data").innerHTML = this.response;
     }
   };
   httpRequestForShowAll.open("GET", "http://127.0.0.1:9099/showall", true);
@@ -63,16 +63,19 @@ function displayAllData() {
 }
 
 function displayOne() {
+  let filterUrl = window.location.href;
+
+let filter = filterUrl.split("=");
+let postNumber = filter[1];
   var httpRequestForOneData = new XMLHttpRequest();
   httpRequestForOneData.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("data").innerHTML = this.response;
+     
+    console.log(this.response);
+
     }
   };
-  httpRequestForOneData.open(
-    "GET",
-    "http://127.0.0.1:9099/showOne?id=",
-    true
-  );
+  httpRequestForOneData.open("GET", "http://127.0.0.1:9099/showOne?cid="+ postNumber, true);
   httpRequestForOneData.send();
 }
+
