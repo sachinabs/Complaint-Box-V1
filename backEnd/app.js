@@ -23,7 +23,7 @@ function dateAndTime() {
   var date =
     today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
   var time = today.getHours() + ":" + today.getMinutes();
-  let cdata = date + " - " + time;
+  let cdata = date + " / " + time;
   return cdata;
 }
 // -------------------------------
