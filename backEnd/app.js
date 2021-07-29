@@ -37,6 +37,8 @@ app.get("/submit", (req, res) => {
     ComplaintTime: dateAndTime(),
     ComplaintUpVotes: 0,
     ComplaintDownVotes: 0,
+    totalVotes:0,
+    averageVote:0
   };
 
   async function createListing(client, newListing, response) {
@@ -76,29 +78,61 @@ app.get("/submit", (req, res) => {
 });
 
 app.get("/trend", cors(), (req, res) => {
-  myObj = [
-    {
-      name: "Mithun",
-      msg: "This is CORS-enabled for a Single Route",
-      id: "xyz",
-    },
-    {
-      name: "Nikalya",
-      msg: "This is CORS-enabled for a Single Route",
-      id: "abc",
-    },
-    {
-      name: "Hashini",
-      msg: "This is CORS-enabled for a Single Route",
-      id: "bda",
-    },
-    {
-      name: "Arun",
-      msg: "This is CORS-enabled for a Single Route",
-      id: "pqr",
-    },
-  ];
-  res.json(myObj);
+
+
+  async function findListings(client) 
+  {
+    const cursor = client.db("sample").collection("students").find();
+  //   const cursor = client.db("sample").collection("students").aggregate(
+  //     [
+  //       { $project: { total: { $add: [ "$ComplaintUpVotes", "$ComplaintDownVotes" ] } } }
+
+  //     ]
+  //  );
+    const results = await cursor.toArray();
+    res.json(results);
+    console.log(results);
+  }
+
+  async function main() {
+    const uri =
+      "mongodb+srv://sachin:sachinabs@cluster0.iaz5f.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+
+    const client = new MongoClient(uri);
+
+    try {
+      await client.connect();
+      const pen = await findListings(client, res);
+    } catch (e) {
+      console.error(e);
+    } finally {
+      await client.close();
+    }
+  }
+  main().catch(console.error);
+  // myObj = [
+  //   {
+  //     name: "Mithun",
+  //     msg: "This is CORS-enabled for a Single Route",
+  //     id: "xyz",
+  //   },
+  //   {
+  //     name: "Nikalya",
+  //     msg: "This is CORS-enabled for a Single Route",
+  //     id: "abc",
+  //   },
+  //   {
+  //     name: "Hashini",
+  //     msg: "This is CORS-enabled for a Single Route",
+  //     id: "bda",
+  //   },
+  //   {
+  //     name: "Arun",
+  //     msg: "This is CORS-enabled for a Single Route",
+  //     id: "pqr",
+  //   },
+  // ];
+  // res.json(myObj);
 });
 
 app.get("/showall", cors(), (req, res) => {
@@ -126,9 +160,39 @@ app.get("/showall", cors(), (req, res) => {
   main().catch(console.error);
 });
 
+
+app.get("/voteUp",(req,res) =>{
+  
+  async function findListings(client) {
+    const cursor = client.db("sample").collection("students").find();
+    const results = await cursor.toArray();
+  }
+
+  async function main() {
+    const uri =
+      "mongodb+srv://sachin:sachinabs@cluster0.iaz5f.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+
+    const client = new MongoClient(uri);
+
+    try {
+      await client.connect();
+      const pen = await findListings(client, res);
+    } catch (e) {
+      console.error(e);
+    } finally {
+      await client.close();
+    }
+  }
+  main().catch(console.error);
+});
+
+
+
+
+
 app.get("/id",(req,res) =>{
  
-  console.log(req.query);
+  console.log(req.query.cmpID);
 
 });
 
@@ -145,3 +209,7 @@ app.get("/id",(req,res) =>{
 
 const port = 9099;
 app.listen(port, () => console.log(`Listening on port ${port}..`));
+
+
+
+
