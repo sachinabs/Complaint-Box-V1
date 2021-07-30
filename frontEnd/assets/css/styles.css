@@ -1,9 +1,8 @@
- /* #trend_one_paragraph, #trend_two_paragraph, #trend_three_paragraph, #trend_four_paragraph  */
-/* cide push panu na pakuran */
-
-p
-{
-    text-overflow: ellipsis;
+#trend_one_paragraph, #trend_two_paragraph, #trend_three_paragraph, #trend_four_paragraph 
+{   
     overflow: hidden;
-    white-space: nowrap;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
 } 
+
