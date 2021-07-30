@@ -1,6 +1,3 @@
-const { json } = require("body-parser");
-const { format } = require("path/posix");
-
 function trendAndListData() {
   var http = new XMLHttpRequest();
   http.onreadystatechange = function () {
@@ -82,27 +79,30 @@ console.log(postNumber);
         let up = document.getElementById("upVote");
         let down = document.getElementById("downVote");
         let desc = document.getElementById("Description");
+        let time = document.getElementById("date");
 
         heading.innerHTML = myjsonData[0].ComplaintTitle;
         rate.innerHTML = myjsonData[0].totalVotes;
         up.innerHTML = myjsonData[0].ComplaintUpVotes;
         down.innerHTML = myjsonData[0].ComplaintDownVotes;
         desc.innerHTML = myjsonData[0].ComplaintText;
+        time.innerHTML = myjsonData[0].ComplaintTime;
 
 
         let up_vote = document.getElementById("voteUp");
         let down_vote = document.getElementById("voteDown");
 
         up_vote.setAttribute(
-          "href",
-          "/VoteUp"
+          "onclick",
+          "postVoteUp();"
+          
         );
 
         down_vote.setAttribute(
-          "href",
-          "/VoteDown"
+          "onclick",
+          "postVoteDown();"
         );
-
+          
     }
   };
   httpRequestForOneData.open("GET", "http://127.0.0.1:9099/showOne?cid="+ postNumber, true);
@@ -110,3 +110,12 @@ console.log(postNumber);
 }
 
 
+function postVoteDown()
+{
+   alert("Vote Down");
+}
+
+function postVoteUp()
+{
+  alert("up");
+}
