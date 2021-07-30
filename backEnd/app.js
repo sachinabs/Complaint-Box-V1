@@ -38,7 +38,6 @@ app.get("/submit", (req, res) => {
     ComplaintUpVotes: 0,
     ComplaintDownVotes: 0,
     totalVotes: 0,
-    averageVote: 0,
   };
 
   async function createListing(client, newListing, response) {
