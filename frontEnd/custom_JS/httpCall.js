@@ -20,27 +20,28 @@ function trendAndListData() {
       // console.log(myjsonData);
 
       trendOne.innerHTML = myjsonData[0].ComplaintTitle;
-      trendTwo.innerHTML = myjsonData[1].ComplaintTitle;
-      trendThree.innerHTML = myjsonData[2].ComplaintTitle;
-      trendFour.innerHTML = myjsonData[3].ComplaintTitle;
-
       trendonePara.innerHTML = myjsonData[0].ComplaintText;
-      trendtwoPara.innerHTML = myjsonData[1].ComplaintText;
-      trendthreePara.innerHTML = myjsonData[2].ComplaintText;
-      trendfourPara.innerHTML = myjsonData[3].ComplaintText;
-
       trendOne.setAttribute(
         "href",
         "showSingle.html?cid="+ myjsonData[0].ComplaintId
       );
+
+      trendTwo.innerHTML = myjsonData[1].ComplaintTitle;
+      trendtwoPara.innerHTML = myjsonData[1].ComplaintText;
       trendTwo.setAttribute(
         "href",
         "showSingle.html?cid="+ myjsonData[1].ComplaintId
       );
+
+      trendThree.innerHTML = myjsonData[2].ComplaintTitle;
+      trendthreePara.innerHTML = myjsonData[2].ComplaintText;
       trendThree.setAttribute(
         "href",
         "showSingle.html?cid="+ myjsonData[2].ComplaintId
       );
+
+      trendFour.innerHTML = myjsonData[3].ComplaintTitle;
+      trendfourPara.innerHTML = myjsonData[3].ComplaintText;
       trendFour.setAttribute(
         "href",
         "showSingle.html?cid="+ myjsonData[3].ComplaintId
@@ -88,9 +89,24 @@ console.log(postNumber);
         down.innerHTML = myjsonData[0].ComplaintDownVotes;
         desc.innerHTML = myjsonData[0].ComplaintText;
 
+
+        let up_vote = document.getElementById("voteUp");
+        let down_vote = document.getElementById("voteDown");
+
+        up_vote.setAttribute(
+          "href",
+          "/VoteUp"
+        );
+
+        down_vote.setAttribute(
+          "href",
+          "/VoteDown"
+        );
+
     }
   };
   httpRequestForOneData.open("GET", "http://127.0.0.1:9099/showOne?cid="+ postNumber, true);
   httpRequestForOneData.send();
 }
+
 

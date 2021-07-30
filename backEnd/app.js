@@ -78,7 +78,11 @@ app.get("/submit", (req, res) => {
 
 app.get("/trend", cors(), (req, res) => {
   async function findListings(client) {
-    const cursor = client.db("sample").collection("students").find();
+    const cursor = client.db("sample").collection("students").aggregate(
+      [
+        { $sort : {totalVotes : -1 } }
+      ]
+   );
     const results = await cursor.toArray();
     res.json(results);
     console.log(results);
@@ -177,6 +181,12 @@ app.get("/showOne", cors(), (req, res) => {
     }
   }
   main().catch(console.error);
+});
+
+
+app.get("/VoteUp",(req,res) => {
+    let complaintId = req.query.cid;
+    console.log("testing");
 });
 
 const port = 9099;
