@@ -17,7 +17,7 @@ function trendAndListData() {
       let trendfourPara = document.getElementById("trend_four_paragraph");
 
       let myjsonData = JSON.parse(this.response);
-      console.log(myjsonData);
+      // console.log(myjsonData);
 
       trendOne.innerHTML = myjsonData[0].ComplaintTitle;
       trendTwo.innerHTML = myjsonData[1].ComplaintTitle;
@@ -67,11 +67,26 @@ function displayOne() {
 
 let filter = filterUrl.split("=");
 let postNumber = filter[1];
+console.log(postNumber);
   var httpRequestForOneData = new XMLHttpRequest();
   httpRequestForOneData.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
      
-    console.log(this.response);
+        let myjsonData = JSON.parse(this.response);
+        console.log(myjsonData);
+        
+
+        let heading = document.getElementById("Heading");
+        let rate = document.getElementById("Rating");
+        let up = document.getElementById("upVote");
+        let down = document.getElementById("downVote");
+        let desc = document.getElementById("Description");
+
+        heading.innerHTML = myjsonData[0].ComplaintTitle;
+        rate.innerHTML = myjsonData[0].totalVotes;
+        up.innerHTML = myjsonData[0].ComplaintUpVotes;
+        down.innerHTML = myjsonData[0].ComplaintDownVotes;
+        desc.innerHTML = myjsonData[0].ComplaintText;
 
     }
   };
