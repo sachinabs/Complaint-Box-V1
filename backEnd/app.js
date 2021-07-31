@@ -27,6 +27,11 @@ function dateAndTime() {
   return cdata;
 }
 // -------------------------------
+
+
+
+
+
 app.get("/submit", (req, res) => {
   let Title = req.query.complaintTitle;
   let Text = req.query.complaintDiscretion;
@@ -75,6 +80,11 @@ app.get("/submit", (req, res) => {
   main().catch(console.error);
 });
 
+
+
+
+
+
 app.get("/trend", cors(), (req, res) => {
   async function findListings(client) {
     const cursor = client.db("sample").collection("students").aggregate(
@@ -105,6 +115,11 @@ app.get("/trend", cors(), (req, res) => {
   main().catch(console.error);
 });
 
+
+
+
+
+
 app.get("/showall", cors(), (req, res) => {
   async function findListings(client) {
     const cursor = client.db("sample").collection("students").find();
@@ -130,29 +145,9 @@ app.get("/showall", cors(), (req, res) => {
   main().catch(console.error);
 });
 
-app.get("/voteUp", (req, res) => {
-  async function findListings(client) {
-    const cursor = client.db("sample").collection("students").find();
-    const results = await cursor.toArray();
-  }
 
-  async function main() {
-    const uri =
-      "mongodb+srv://sachin:sachinabs@cluster0.iaz5f.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 
-    const client = new MongoClient(uri);
 
-    try {
-      await client.connect();
-      const pen = await findListings(client, res);
-    } catch (e) {
-      console.error(e);
-    } finally {
-      await client.close();
-    }
-  }
-  main().catch(console.error);
-});
 
 app.get("/showOne", cors(), (req, res) => {
   let postNUmber = req.query.cid;
@@ -183,10 +178,89 @@ app.get("/showOne", cors(), (req, res) => {
 });
 
 
-app.get("/VoteUp",(req,res) => {
-    let complaintId = req.query.cid;
-    console.log("testing");
+
+
+app.get("/VoteDown",(req,res) => {
+    let cid = req.query.cid;
+
+
+// Reading the data
+    async function UpdateDownVote(client) {
+      const cursor = await client.db("sample").collection("students").updateOne(
+      { 
+        ComplaintId : cid
+      }, 
+      { $inc: 
+        { 
+          totalVotes: 1 ,
+          ComplaintDownVotes:1 
+        }
+      });
+
+      console.log("data")
+    }
+  
+    async function main() {
+      const uri =
+        "mongodb+srv://sachin:sachinabs@cluster0.iaz5f.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+  
+      const client = new MongoClient(uri);
+  
+      try {
+        await client.connect();
+        const pen = await UpdateDownVote(client, res);
+      } catch (e) {
+        console.error(e);
+      } finally {
+        await client.close();
+      }
+    }
+    main().catch(console.error);
+
+// end reading
 });
+
+
+
+app.get("/VoteUp",(req,res) => {
+  let complaintId = req.query.cid;
+
+
+// Reading the data
+  async function UpdateDownVote(client) {
+    const cursor = client.db("sample").collection("students").find({"ComplaintId":complaintId});
+    const results = await cursor.toArray();
+    // res.send(
+    //   "<script>alert(Your Complaint is recorded); window.location.href =http://127.0.0.1:5501/frontEnd/showSingle.html?cid="+ complaintId +"; </script>"
+    // );
+    res.send("<script>alert(Your Complaint is recorded);</script>");
+
+    // console.log(results);
+  }
+
+  async function main() {
+    const uri =
+      "mongodb+srv://sachin:sachinabs@cluster0.iaz5f.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+
+    const client = new MongoClient(uri);
+
+    try {
+      await client.connect();
+      const pen = await UpdateDownVote(client, res);
+    } catch (e) {
+      console.error(e);
+    } finally {
+      await client.close();
+    }
+  }
+  main().catch(console.error);
+
+// end reading
+});
+
+
+
+
 
 const port = 9099;
 app.listen(port, () => console.log(`Listening on port ${port}..`));

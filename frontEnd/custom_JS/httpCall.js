@@ -112,10 +112,34 @@ console.log(postNumber);
 
 function postVoteDown()
 {
-   alert("Vote Down");
+  let filterUrl = window.location.href;
+  let filter = filterUrl.split("=");
+  let postNumber = filter[1];
+
+  let httpRequestForVoteDown = new XMLHttpRequest();
+  httpRequestForVoteDown.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+     
+          
+    }
+  };
+  httpRequestForVoteDown.open("GET", "http://127.0.0.1:9099/VoteDown?cid="+ postNumber, true);
+  httpRequestForVoteDown.send();
 }
 
 function postVoteUp()
 {
-  alert("up");
+  let filterUrl = window.location.href;
+  let filter = filterUrl.split("=");
+  let postNumber = filter[1];
+
+  let httpRequestForVoteUp = new XMLHttpRequest();
+  httpRequestForVoteUp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+     
+          
+    }
+  };
+  httpRequestForVoteUp.open("GET", "http://127.0.0.1:9099/VoteUp?cid="+ postNumber, true);
+  httpRequestForVoteUp.send();
 }
