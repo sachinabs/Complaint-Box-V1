@@ -223,7 +223,7 @@ app.get("/VoteDown",(req,res) => {
 
 
 app.get("/VoteUp",(req,res) => {
-  let complaintId = req.query.cid;
+  let cid = req.query.cid;
 
 
 // Reading the data
