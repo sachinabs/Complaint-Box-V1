@@ -228,14 +228,18 @@ app.get("/VoteUp",(req,res) => {
 
 // Reading the data
   async function UpdateDownVote(client) {
-    const cursor = client.db("sample").collection("students").find({"ComplaintId":complaintId});
-    const results = await cursor.toArray();
-    // res.send(
-    //   "<script>alert(Your Complaint is recorded); window.location.href =http://127.0.0.1:5501/frontEnd/showSingle.html?cid="+ complaintId +"; </script>"
-    // );
-    res.send("<script>alert(Your Complaint is recorded);</script>");
+    const cursor = await client.db("sample").collection("students").updateOne(
+      { 
+        ComplaintId : cid
+      }, 
+      { $inc: 
+        { 
+          totalVotes: 1 ,
+          ComplaintUpVotes:1 
+        }
+      });
 
-    // console.log(results);
+      console.log("data")
   }
 
   async function main() {
