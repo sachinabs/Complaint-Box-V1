@@ -16,28 +16,28 @@ function trendAndListData() {
       let myjsonData = JSON.parse(this.response);
       // console.log(myjsonData);
 
-      trendOne.innerHTML = myjsonData[0].ComplaintTitle;
+      trendOne.innerHTML = "#1  " + myjsonData[0].ComplaintTitle;
       trendonePara.innerHTML = myjsonData[0].ComplaintText;
       trendOne.setAttribute(
         "href",
         "showSingle.html?cid="+ myjsonData[0].ComplaintId
       );
 
-      trendTwo.innerHTML = myjsonData[1].ComplaintTitle;
+      trendTwo.innerHTML = "#2  " + myjsonData[1].ComplaintTitle;
       trendtwoPara.innerHTML = myjsonData[1].ComplaintText;
       trendTwo.setAttribute(
         "href",
         "showSingle.html?cid="+ myjsonData[1].ComplaintId
       );
 
-      trendThree.innerHTML = myjsonData[2].ComplaintTitle;
+      trendThree.innerHTML = "#3  " + myjsonData[2].ComplaintTitle;
       trendthreePara.innerHTML = myjsonData[2].ComplaintText;
       trendThree.setAttribute(
         "href",
         "showSingle.html?cid="+ myjsonData[2].ComplaintId
       );
 
-      trendFour.innerHTML = myjsonData[3].ComplaintTitle;
+      trendFour.innerHTML = "#4  " + myjsonData[3].ComplaintTitle;
       trendfourPara.innerHTML = myjsonData[3].ComplaintText;
       trendFour.setAttribute(
         "href",
