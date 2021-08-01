@@ -65,14 +65,14 @@ function displayOne() {
 
 let filter = filterUrl.split("=");
 let postNumber = filter[1];
-console.log(postNumber);
+
   var httpRequestForOneData = new XMLHttpRequest();
   httpRequestForOneData.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
      
-        let myjsonData = JSON.parse(this.response);
-        console.log(myjsonData);
+        let myjsonData = JSON.parse(this.response);  
         
+        document.title = myjsonData[0].ComplaintTitle;
 
         let heading = document.getElementById("Heading");
         let rate = document.getElementById("Rating");
@@ -136,10 +136,13 @@ function postVoteUp()
   let httpRequestForVoteUp = new XMLHttpRequest();
   httpRequestForVoteUp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
-     
-          
+      
+      
     }
+
+
   };
   httpRequestForVoteUp.open("GET", "http://127.0.0.1:9099/VoteUp?cid="+ postNumber, true);
   httpRequestForVoteUp.send();
 }
+

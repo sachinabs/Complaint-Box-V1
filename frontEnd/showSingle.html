@@ -4,7 +4,6 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Untitled 2</title>
     <link rel="stylesheet" href="Show/assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="Show/assets/fonts/ionicons.min.css">
     <link rel="stylesheet" href="Show/assets/css/gradient-navbar-1.css">
@@ -15,6 +14,8 @@
     <link rel="stylesheet" href="Show/assets/css/Swiper-Slider-Card-For-Blog-Or-Product-1.css">
     <link rel="stylesheet" href="Show/assets/css/Swiper-Slider-Card-For-Blog-Or-Product.css">
     <script src="custom_JS/httpCall.js"></script>
+
+    <title>Loading...</title>
 </head>
 
 <body onload=" displayOne();" class="text-center">
@@ -23,9 +24,9 @@
             <div
                 class="collapse navbar-collapse" id="navcol-1">
                 <ul class="nav navbar-nav ml-auto">
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="#">Home</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="http://127.0.0.1:5501/frontEnd/index.html">Home</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="#">Show All</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="#">Third Item</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="#">Third</a></li>
                 </ul>
         </div>
         </div>
@@ -44,14 +45,21 @@
                 <label style="font-size: 14px;" id="downVote">-</label>
                     <p class="text-justify" style="padding-bottom: 0px;margin-bottom: 10px;" id="Description"><br>Loading<br></p>
             </div><label class="text-left" id="date">00/00/0000 12:00AM</label>
+
+            
+
+
             <div class="buttons">
-                <button class="btn btn-secondary text-secondary" id="voteDown" role="button" >VOTE DOWN</a>
+                <button class="btn btn-secondary text-secondary" id="voteDown" role="button"  >VOTE DOWN</a>
                 <button class="btn btn-primary" role="button" id="voteUp" >VOTE UP</a></div>
+
+                    
         </div>
     </div>
     <script src="Show/assets/js/jquery.min.js"></script>
     <script src="Show/assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="Show/assets/js/Swiper-Slider-Card-For-Blog-Or-Product.js"></script>
+    <script src="custom_JS/ClientSideActions.js"></script>
     
     
 </body>
