@@ -1,62 +1,46 @@
-function displayAllData(h, d, l) 
+function display() 
 {
+    alert("Testing");
 
-    let mainDiv = document.querySelector('.container');
+    let mainDiv = document.querySelector('.main-container');
 
-    let card = document.createElement('div');
-    card.style.width = "30%";
-    card.style.height = "50%";
-    card.style.background = "#eeeee4";
-    card.style.color = "black";
-    card.style.boxShadow = "0.1rem 0.1rem 0.3rem 0.1rem rgba(7, 7, 7, 0.3)";
-
-    card.className = "card";
+    let card = document.createElement('div'); 
+    card.className = "card card-3";
     mainDiv.appendChild(card);
 
-    title = document.createElement('h5');
-    title.className = "cardTitle";
+    title = document.createElement('h2');
+    title.className = "card__title";
     title.id = "cardTitle";
+    // title.innerHTML = "SQL Network Interfaces";
     card.appendChild(title);
 
-    let heading = document.createTextNode(h);
-    title.appendChild(heading);
+    // let heading = document.createTextNode(h);
+    // title.appendChild(heading);
 
     description = document.createElement('p');
-    description.className = "cardDescription";
-    description.innerHTML = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodm tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minimLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim"
+    description.className = "content";
+    description.innerHTML = "Lorem ipsum dolor sit amet, consectetur adipisicing elit,  sed do eiusmodm tempor incididunt  sed do eiusmodm tempor incididunt sed do eiusmodm tempor incididunt"   
     description.id = "cardDescription";
     card.appendChild(description);
 
-    let desc = document.createTextNode(d);
-    description.appendChild(desc);
+    descriptionTwo = document.createElement('p');
+    descriptionTwo.className = "card__apply";
+    // descriptionTwo.innerHTML = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodm tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minimLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim"
+    descriptionTwo.id = "cardDescriptionTwo";
+    card.appendChild(descriptionTwo);
 
-    decButton = document.createElement('button');
-    decButton.style.width = "20px"
-    decButton.style.height = "20px";
-    decButton.style.background = "blue";
-    decButton.style.color = "white";
-    decButton.style.border = "none"
-    decButton.innerHTML = "+";
-    decButton.className = "cardVoteDown";
-    decButton.id = "cardVoteDown";    
-    card.appendChild(decButton);
 
-    count = document.createElement('label');
-    count.className = "voteCount";
-    count.id = "voteCount";
-    card.appendChild(count);
+    link = document.createElement('a');
+    link.className = "card__link";
+    link.id = "readmore";
+    link.innerHTML = "Read More"
+    descriptionTwo.appendChild(link);
 
-    let ct = document.createTextNode(l);
-    count.appendChild(ct);
+    border = document.createElement('i');
+    border.className = "fas fa-arrow-right";
+    border.id = "readmore";
+    link.appendChild(border);
 
-    incButton = document.createElement('button');
-    incButton.style.width = "20px"
-    incButton.style.height = "20px";
-    incButton.style.background = "blue";
-    incButton.style.color = "white";
-    incButton.style.border = "none"
-    incButton.innerHTML = "-";
-    incButton.className = "cardVoteUp";
-    incButton.id = "cardVoteUp";
-    card.appendChild(incButton);
+
+
 }  
