@@ -63,7 +63,7 @@ function displayAllData() {
       card.className = "card card-3";
       mainDiv.appendChild(card);
   
-      title = document.createElement('h2');
+      title = document.createElement('h3');
       title.className = "card__title";
       title.id = "cardTitle";
       title.innerHTML = a;
@@ -107,8 +107,13 @@ function displayAllData() {
     if (this.readyState == 4 && this.status == 200) {
 let myData = JSON.parse(this.response)
 
-      document.getElementById("demo").innerHTML = myData.length;
-      //  console.log(this.response)
+      // document.getElementById("demo").innerHTML = myData.length;
+      for(let i = 0; i<myData.length ;i++)
+      {
+        let t = myData[i].ComplaintTitle;
+        let p = myData[i].ComplaintText;
+        display(t,p);
+      }
     }
   };
   httpRequestForShowAll.open("GET", "http://127.0.0.1:9099/showall", true);
