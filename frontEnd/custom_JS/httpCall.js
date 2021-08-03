@@ -63,7 +63,7 @@ function displayAllData() {
       card.className = "card card-3";
       mainDiv.appendChild(card);
   
-      title = document.createElement('h3');
+      title = document.createElement('h4');
       title.className = "card__title";
       title.id = "cardTitle";
       title.innerHTML = a;
