@@ -125,6 +125,7 @@ app.get("/showall", cors(), (req, res) => {
     const cursor = client.db("sample").collection("students").find();
     const results = await cursor.toArray();
     res.json(results);
+    // console.log(results);
   }
 
   async function main() {

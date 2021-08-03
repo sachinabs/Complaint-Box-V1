@@ -33,7 +33,7 @@ function display()
     link = document.createElement('a');
     link.className = "card__link";
     link.id = "readmore";
-    link.innerHTML = "Read More"
+    link.innerHTM = "Read More"
     descriptionTwo.appendChild(link);
 
     border = document.createElement('i');
