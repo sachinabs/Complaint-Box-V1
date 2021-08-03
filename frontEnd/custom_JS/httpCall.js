@@ -105,9 +105,9 @@ function displayAllData() {
 
 
     if (this.readyState == 4 && this.status == 200) {
-let myData = JSON.parse(this.response)
+        let myData = JSON.parse(this.response)
 
-      document.getElementById("demo").innerHTML = myData.length;
+        document.getElementsByClassName("card__title").innerHTML = myData[0].ComplaintTitle;
       //  console.log(this.response)
     }
   };

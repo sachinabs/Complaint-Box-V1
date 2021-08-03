@@ -144,6 +144,14 @@
   .card-5 {
     background: radial-gradient(#f588d8, #c0a3e5);
   }
+
+  .content
+  {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+  }
   
   /* RESPONSIVE */
   
