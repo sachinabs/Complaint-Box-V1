@@ -54,7 +54,7 @@ function displayAllData() {
 
 
 
-  function display(a, b) 
+  function display(a, b,c) 
   {
   
       let mainDiv = document.querySelector('.main-container');
@@ -85,7 +85,7 @@ function displayAllData() {
       a.id = "readmore";
       linkText = document.createTextNode("Read More");
       link.appendChild(linkText);
-      link.href = "";
+      link.href = "http://127.0.0.1:5501/frontEnd/showSingle.html?cid="+ c;
       descriptionTwo.appendChild(link);
   
       border = document.createElement('i');
@@ -106,7 +106,8 @@ function displayAllData() {
       {
         let t = myData[i].ComplaintTitle;
         let p = myData[i].ComplaintText;
-        display(t,p);
+        let l = myData[i].ComplaintId;
+        display(t,p,l);
       }
     }
   };
