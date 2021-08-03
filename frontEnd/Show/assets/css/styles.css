@@ -73,12 +73,11 @@
     transform: scale(1.01);
   }
   
-  .card__link,
-  .card__exit,
-  .card__icon {
+  .card__link {
     position: relative;
     text-decoration: none;
     color: blue;
+    font-size: 15px;
   }
   
   .card__link::after {
@@ -92,8 +91,6 @@
     transition: all 0.5s;
   }
   
-
-
   .card__link:hover::after {
     width: 100%;
   }

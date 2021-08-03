@@ -69,9 +69,6 @@ function displayAllData() {
       title.innerHTML = a;
       card.appendChild(title);
   
-      // let heading = document.createTextNode(h);
-      // title.appendChild(heading);
-  
       description = document.createElement('p');
       description.className = "content";
       description.innerHTML = b;
@@ -82,12 +79,13 @@ function displayAllData() {
       descriptionTwo.className = "card__apply";
       descriptionTwo.id = "cardDescriptionTwo";
       card.appendChild(descriptionTwo);
-  
-  
+
       link = document.createElement('a');
       link.className = "card__link";
-      link.id = "readmore";
-      link.innerHTML = "Read More"
+      a.id = "readmore";
+      linkText = document.createTextNode("Read More");
+      link.appendChild(linkText);
+      link.href = "";
       descriptionTwo.appendChild(link);
   
       border = document.createElement('i');
@@ -101,9 +99,6 @@ function displayAllData() {
   
 
   httpRequestForShowAll.onreadystatechange = function () {
-
-
-
     if (this.readyState == 4 && this.status == 200) {
         let myData = JSON.parse(this.response)
 
